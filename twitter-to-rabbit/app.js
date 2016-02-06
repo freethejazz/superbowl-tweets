@@ -4,13 +4,14 @@ let nconf = require('nconf');
 let Twit = require('twit');
 let amqplib = require('amqplib');
 
-const ex = 'tweets';
 const tracking = 'superbowl'
 
 // Do the config thing
 nconf.argv()
   .env()
   .file({file: '../config.json'});
+
+let ex = nconf.get('rabbit_exchange');
 
 // Establish connection to twitter streaming API
 var T = new Twit({
@@ -26,7 +27,6 @@ let open = amqplib.connect(`amqp://${nconf.get('rabbit_host')}`);
 open.then((conn) => {
   conn.createChannel()
     .then((ch) => {
-      let msg = 'somemessage';
       ch.assertExchange(ex, 'fanout', {durable: false});
       console.log('Connected to Exchange');
 
