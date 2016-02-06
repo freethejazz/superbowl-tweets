@@ -4,7 +4,7 @@ let nconf = require('nconf');
 let Twit = require('twit');
 let amqplib = require('amqplib');
 
-const tracking = 'superbowl'
+const tracking = ['superbowl', 'panther', 'bronco'];
 
 // Do the config thing
 nconf.argv()
