@@ -40,3 +40,7 @@ open.then((conn) => {
     });
 });
 
+open.catch((err) => {
+  console.warn(`Error connecting to rabbit at ${nconf.get('rabbit_host')}`);
+  process.exit(1);
+});
