@@ -61,6 +61,11 @@ let teamCounts = function() {
     { $group: {
       _id: "$affiliation",
       count: { $sum: 1 }
+    }},
+    { $project: {
+      _id: 0,
+      affiliation: "$_id",
+      count: 1
     }}
   ]);
 };

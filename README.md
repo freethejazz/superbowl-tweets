@@ -53,15 +53,15 @@ Returns:
   "status": 200,
   "data": [
     {
-      "_id": "Broncos",
+      "affiliation": "Broncos",
       "count": 7
     },
     {
-      "_id":"Panthers",
+      "affiliation":"Panthers",
       "count":17
     },
     {
-      "_id": "Unaffiliated",
+      "affiliation": "Unaffiliated",
       "count":53
     }
   ]
