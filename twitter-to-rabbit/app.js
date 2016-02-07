@@ -12,6 +12,15 @@ nconf.argv()
   .file('config.json')
   .file('prod', '/etc/twitter-to-rabbit/config.json');
 
+nconf.required([
+  'consumer_key',
+  'consumer_secret',
+  'access_token',
+  'access_token_secret',
+  'rabbit_host',
+  'rabbit_exchange'
+]);
+
 let ex = nconf.get('rabbit_exchange');
 
 // Establish connection to twitter streaming API

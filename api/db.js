@@ -9,6 +9,10 @@ nconf.argv()
   .file('config.json')
   .file('prod', '/etc/twitter-to-rabbit/config.json');
 
+nconf.required([
+  'mongo_host'
+]);
+
 const mongoUrl = `mongodb://${nconf.get('mongo_host')}:27017/superTweets`;
 
 // Connect to mongo

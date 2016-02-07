@@ -11,6 +11,13 @@ nconf.argv()
   .file('config.json')
   .file('prod', '/etc/twitter-to-rabbit/config.json');
 
+nconf.required([
+  'rabbit_host',
+  'rabbit_exchange',
+  'sentiment_queue',
+  'mongo_host'
+]);
+
 const ex = nconf.get('rabbit_exchange');
 const qName = nconf.get('sentiment_queue');
 const mongoUrl = `mongodb://${nconf.get('mongo_host')}:27017/superTweets`;
