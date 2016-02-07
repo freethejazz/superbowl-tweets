@@ -14,7 +14,7 @@ const qName = nconf.get('simple_queue');
 const mongoUrl = `mongodb://${nconf.get('mongo_host')}:27017/superTweets`;
 
 let writeDoc = function(coll, doc) {
-  coll.insert(doc, function(err, result) {
+  coll.insertOne(doc, function(err, result) {
     if(err) {
       console.error(err);
     } else {
