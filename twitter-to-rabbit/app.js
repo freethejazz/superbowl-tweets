@@ -32,8 +32,10 @@ open.then((conn) => {
 
       // Connect to twitter streaming
       stream.on('tweet', (tweet) => {
-        ch.publish(ex, '', new Buffer(JSON.stringify(tweet)));
-        console.log(` [x] Sent ${tweet.id}`);
+        if(tweet.lang === 'en') {
+          ch.publish(ex, '', new Buffer(JSON.stringify(tweet)));
+          console.log(` [x] Sent ${tweet.id}`);
+        }
       });
     });
 });
