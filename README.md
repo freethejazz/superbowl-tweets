@@ -37,14 +37,35 @@ Right now, the API is incomplete, and there is no front end.
 GET: `http://<your-docker-machine-ip>:8000/counts`
 Returns:
 ```
-{"status":200,"data":{"count":83}}
+{
+  "status": 200,
+  "data": {
+    "count": 83
+  }
+}
 ```
 
 #### Counts By Team Affiliation
 GET: `http://<your-docker-machine-ip>:8000/countsByTeam`
 Returns:
 ```
-{"status":200,"data":[{"_id":"Broncos","count":7},{"_id":"Panthers","count":17},{"_id":"Unaffiliated","count":53}]}
+{
+  "status": 200,
+  "data": [
+    {
+      "_id": "Broncos",
+      "count": 7
+    },
+    {
+      "_id":"Panthers",
+      "count":17
+    },
+    {
+      "_id": "Unaffiliated",
+      "count":53
+    }
+  ]
+}
 ```
 
 ## Basic Architecture
