@@ -28,12 +28,13 @@ let getAffiliation = (doc) => {
     affiliation = 'Unaffiliated';
   }
 
-  console.log(`Affiliation for "${doc.text}" \n ${affiliation}`);
+  return affiliation;
 };
 
 let processDoc = function(doc) {
   return {
     id: doc.id,
+    date: new Date(parseInt(doc.timestamp_ms)),
     text: doc.text,
     sentiment: sentiment(doc.text),
     affiliation: getAffiliation(doc)
@@ -41,7 +42,7 @@ let processDoc = function(doc) {
 };
 
 let writeDoc = function(coll, doc) {
-  coll.insert(doc, function(err, result) {
+  coll.insertOne(doc, function(err, result) {
     if(err) {
       console.error(err);
     } else {
