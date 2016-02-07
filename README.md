@@ -100,6 +100,41 @@ Returns:
 }
 ```
 
+#### Histogram by minute by team
+GET: `http://<your-docker-machine-ip>:8000/histogram/minute/team`
+Returns:
+```
+{
+  "status": 200,
+  "data": [
+    {
+      "averageSentiment": 0,
+      "hour": 3,
+      "minute": 55,
+      "team": "Broncos"
+    },
+    {
+      "averageSentiment": 2.7142857142857,
+      "hour": 3,
+      "minute": 55,
+      "team": "Panthers"
+    },
+    {
+      "averageSentiment": 1.7142857142857,
+      "hour": 3,
+      "minute": 54,
+      "team": "Broncos"
+    },
+    {
+      "averageSentiment": 0.98058252427184,
+      "hour": 3,
+      "minute": 54,
+      "team": "Unaffiliated"
+    }
+  ]
+}
+```
+
 ## Basic Architecture
 
 ```

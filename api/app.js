@@ -54,6 +54,20 @@ server.route({
   }
 });
 
+// Minute Histogram  by Team
+server.route({
+  method: 'GET',
+  path:'/histogram/minute/team',
+  handler: function (request, reply) {
+    db.minuteHistogramTeam().then((doc) => {
+      reply({
+        status: 200,
+        data: doc
+      });
+    });
+  }
+});
+
 // Start the server
 server.start((err) => {
 

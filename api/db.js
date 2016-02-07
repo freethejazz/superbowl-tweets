@@ -84,8 +84,25 @@ let minuteHistogram = function() {
   ]);
 };
 
+let minuteHistogramTeam = function() {
+  return agg([
+    { $group: {
+      _id: {minute: {$minute: "$date"}, hour: {$hour: "$date"}, team: "$affiliation"},
+      averageSentiment: { $avg: "$sentiment.score" }
+    }},
+    { $project: {
+      _id: 0,
+      hour: "$_id.hour",
+      minute: "$_id.minute",
+      team: "$_id.team",
+      averageSentiment: 1
+    }}
+  ]);
+};
+
 module.exports = {
   count,
   teamCounts,
-  minuteHistogram
+  minuteHistogram,
+  minuteHistogramTeam
 };
