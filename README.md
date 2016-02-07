@@ -68,6 +68,38 @@ Returns:
 }
 ```
 
+#### Histogram by minute
+GET: `http://<your-docker-machine-ip>:8000/histogram/minute`
+Returns:
+```
+{
+  "status": 200,
+  "data": [
+    {
+      "averageSentiment": 1.283185840708,
+      "time": {
+        "minute": 48,
+        "hour": 3
+      }
+    },
+    {
+      "averageSentiment": 0.88034188034188,
+      "time": {
+        "minute": 47,
+        "hour": 3
+      }
+    },
+    {
+      "averageSentiment": 1.5421686746988,
+      "time": {
+        "minute": 52,
+        "hour": 2
+      }
+    }
+  ]
+}
+```
+
 ## Basic Architecture
 
 ```

@@ -70,7 +70,22 @@ let teamCounts = function() {
   ]);
 };
 
+let minuteHistogram = function() {
+  return agg([
+    { $group: {
+      _id: {minute: {$minute: "$date"}, hour: {$hour: "$date"}},
+      averageSentiment: { $avg: "$sentiment.score" }
+    }},
+    { $project: {
+      _id: 0,
+      time: "$_id",
+      averageSentiment: 1
+    }}
+  ]);
+};
+
 module.exports = {
   count,
-  teamCounts
-}
+  teamCounts,
+  minuteHistogram
+};
