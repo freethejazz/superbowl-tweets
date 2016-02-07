@@ -9,7 +9,8 @@ const tracking = ['superbowl', 'panther', 'bronco'];
 // Do the config thing
 nconf.argv()
   .env()
-  .file({file: '../config.json'});
+  .file('config.json')
+  .file('prod', '/etc/twitter-to-rabbit/config.json');
 
 let ex = nconf.get('rabbit_exchange');
 
@@ -43,4 +44,10 @@ open.then((conn) => {
 open.catch((err) => {
   console.warn(`Error connecting to rabbit at ${nconf.get('rabbit_host')}`);
   process.exit(1);
+});
+
+process.on( 'SIGINT', function() {
+  console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
+  // some other closing procedures go here
+  process.exit(0);
 });

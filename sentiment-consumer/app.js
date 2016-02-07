@@ -8,7 +8,8 @@ let MongoClient = require('mongodb').MongoClient;
 // Do the config thing
 nconf.argv()
   .env()
-  .file({file: '../config.json'});
+  .file('config.json')
+  .file('prod', '/etc/twitter-to-rabbit/config.json');
 
 const ex = nconf.get('rabbit_exchange');
 const qName = nconf.get('sentiment_queue');

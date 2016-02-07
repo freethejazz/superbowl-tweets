@@ -4,6 +4,7 @@
   "description": "Consumes the twitter stream and pipes into rabbitmq",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

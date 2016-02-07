@@ -1,9 +1,31 @@
-rabbit:
-  image: rabbitmq:3.6.0-management
-  ports:
-    - "15672:15672"
-    - "5672:5672"
-mongo:
-  image: mongo:3.2
-  ports:
-    - "27017:27017"
+version: '2'
+services:
+  api:
+    build: ./api
+    depends_on:
+      - mongo
+    ports:
+      - "8000:8000"
+  ingest:
+    build: ./twitter-to-rabbit
+    depends_on:
+      - rabbit
+  simple:
+    build: ./simple-consumer
+    depends_on:
+      - mongo
+      - rabbit
+  sentiment:
+    build: ./sentiment-consumer
+    depends_on:
+      - mongo
+      - rabbit
+  rabbit:
+    image: rabbitmq:3.6.0-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  mongo:
+    image: mongo:3.2
+    ports:
+      - "27017:27017"

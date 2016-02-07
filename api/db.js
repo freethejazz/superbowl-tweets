@@ -6,7 +6,8 @@ let nconf = require('nconf');
 // Do the config thing
 nconf.argv()
   .env()
-  .file({file: '../config.json'});
+  .file('config.json')
+  .file('prod', '/etc/twitter-to-rabbit/config.json');
 
 const mongoUrl = `mongodb://${nconf.get('mongo_host')}:27017/superTweets`;
 
